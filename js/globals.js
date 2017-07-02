@@ -239,8 +239,8 @@ exports.downloadYtSig = function(sig, videoId, cb) {
 	let signFuncRegex = /function\([a-z]\){[a-z]\=[a-z]\.split\(""\);(.*?)return [a-z]\.join\(""\)};/;
 	let _this = this;
 	this.getSource("https://www.youtube.com/embed/" + videoId, function(ytErr, ytResp, ytBody) {
-		let baseUrl = "https:" + ytBody.match(baseRegex)[1];
-
+		let baseUrl = "https://www.youtube.com/" + ytBody.match(baseRegex)[1];
+		
 		_this.getSource(baseUrl, function(err, resp, baseBody) {
 
 			// Start by finding the function and reading what it does.
@@ -305,7 +305,7 @@ exports.decipherSignature = function(signature, videoId, cb) {
                 // File does not exsist, download.
                 download = true;
             }
-            throw statsErr;
+            console.log(statsErr);
         } else {
             let modified = Math.floor(stats.mtime / 1000);
             let now = Date.now() / 1000;

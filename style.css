@@ -10,13 +10,24 @@ body, html {
     background: #fafafa;
 }
 
+.fs {
+    justify-content: flex-start;
+}
+
 body > content {
-    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+	border: none;
+	background: #ddd;
+	margin: 30px 0;
 }
 
 .hidden {
@@ -26,15 +37,19 @@ body > content {
 .title {
 	font-size: 36px;
     text-align: center;
+    margin-bottom: 25px;
+}
+
+.ws {
+    width: 70%;
 }
 
 #url-dl {
-    width: 70%;
+    margin-top: 30px;
 }
 
 #url-dl #download-form {
     display: flex;
-    margin-top: 25px;
 }
 
 #url-dl #download-form input {
@@ -55,7 +70,106 @@ body > content {
     padding: 14px 18px;
     text-align: center;
     background: #123212;
-    color: white;
+    color: #fafafa;
     font-size: 24px;
     cursor: pointer;
+}
+
+#download-info {
+    width: 100%;
+}
+
+#videoinfo {
+    margin: auto;
+	height: 70px;
+}
+
+#videoinfo #thumb {
+    display: inline-block;
+    width: 125px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#videoinfo #info {
+	display: inline-block;
+	height: 100%;
+	width: calc(100% - 135px);
+	float: right;
+}
+
+#videoinfo #title {
+	vertical-align: top;
+	height: 50%;
+	font-size: 28px;
+	line-height: 35px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+
+#videoinfo #undertitle {
+	height: 50%;
+}
+
+#videoinfo #undertitle #vssicon {
+	display: inline-block;
+	width: 32px;
+	height: 100%;
+    background-repeat: no-repeat;
+}
+
+#videoinfo #undertitle #sections {
+	width: calc(100% - 36px);
+	height: 100%;
+	float: right;
+    display: flex;
+}
+
+#videoinfo #undertitle #sections > div {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	line-height: 35px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+a.download-btn {
+    padding: 7px 10px;
+    background: #123212;
+    color: #fafafa;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#qualities {
+    margin: 0 auto 30px auto;
+}
+
+table {
+    border: 0;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    font-size: 20px;
+}
+
+th, td {
+    padding: 10px 0;
+    text-align: center;
+}
+
+tbody {
+    background: #eee;
+}
+
+tbody tr {
+    border-top: 1px solid #ddd;
 }

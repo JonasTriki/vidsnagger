@@ -16,6 +16,8 @@ console.log("VidSnagger server running.");
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+let curVSS;
 app.use(expressValidator({
     customValidators: {
         isValidUrl: function(url) {
@@ -28,6 +30,7 @@ app.use(expressValidator({
             for (let i = 0; i < vss.list.length; i++) {
                 let s = vss[vss.list[i]];
                 if (s.validateUrl(url)) {
+                    curVSS = s;
                     return true;
                 }
             }
@@ -40,6 +43,7 @@ app.use(cors());
 
 app.use(express.static("./"));
 app.post("/", function(req, res, next) {
+    curVSS = undefined;
 
     // Validate url query
     req.checkBody("url", "Invalid url").isValidUrl();
@@ -48,7 +52,9 @@ app.post("/", function(req, res, next) {
         res.send({status: "Invalid url", data: ""});
         return;
     }
-    let url = req.body.url;
 
-    res.send({status: "ok", data: url});
+    let url = req.body.url;
+    curVSS.getInfo(url, (info) => {
+        res.send({status: "ok", data: {info: info, favicon: curVSS.getFavicon()}});
+    });
 });
