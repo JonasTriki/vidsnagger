@@ -77,10 +77,6 @@ function checkUrlParams() {
             };
             req.send("url=" + url);
         }
-    } else {
-
-        // Otherwhise, TEMP.
-        elements.urlBox.value = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }
 }
 
